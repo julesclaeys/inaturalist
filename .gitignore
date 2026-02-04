@@ -3,3 +3,6 @@
 *.json
 *private_key.txt
 .gitignore
+data/
+logs/
+.pyc

@@ -10,9 +10,9 @@ import pandas as pd
 import csv
 
 
-private_key_file = os.getenv("PRIVATE_KEY_FILE")
+load_dotenv()
+private_key_file = os.getenv('PRIVATE_KEY_FILE')
 private_key_file_pwd = os.getenv("PRIVATE_KEY_PASSWORD")
-
 
 conn_params = {
     'account': 'ad21223.eu-west-1',

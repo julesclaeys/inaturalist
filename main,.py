@@ -1,121 +1,25 @@
 import requests
 import time
 import json
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
+import logging
+import os
+
+#Import Functions
+from get_park_ids import *
+
 
 # -----------------------------
 # CONFIG
 # -----------------------------
-AUTOCOMPLETE_URL = "https://api.inaturalist.org/v1/places/autocomplete"
+#AUTOCOMPLETE_URL = "https://api.inaturalist.org/v1/places/autocomplete"
 PLACES_URL = "https://api.inaturalist.org/v1/places"
 OBSERVATIONS_URL = "https://api.inaturalist.org/v1/observations"
 
 SLEEP_SECONDS = 5
 DAYS_BACK =4
-# -----------------------------
-# NATIONAL PARK NAMES
-# -----------------------------
-national_parks = [
-    "Acadia National Park",
-    "American Samoa National Park",
-    "Arches National Park",
-    "Badlands National Park",
-    "Big Bend National Park",
-    "Biscayne National Park",
-    "Black Canyon of the Gunnison National Park",
-    "Bryce Canyon National Park",
-    "Canyonlands National Park",
-    "Capitol Reef National Park",
-    "Carlsbad Caverns National Park",
-    "Channel Islands National Park",
-    "Congaree National Park",
-    "Crater Lake National Park",
-    "Cuyahoga Valley National Park",
-    "Death Valley National Park",
-    "Denali National Park & Preserve",
-    "Dry Tortugas National Park",
-    "Everglades National Park",
-    "Gates of the Arctic National Park & Preserve",
-    "Gateway Arch National Park",
-    "Glacier Bay National Park & Preserve",
-    "Glacier National Park",
-    "Grand Canyon National Park",
-    "Grand Teton National Park",
-    "Great Basin National Park",
-    "Great Sand Dunes National Park & Preserve",
-    "Great Smoky Mountains National Park",
-    "Guadalupe Mountains National Park",
-    "Haleakalā National Park",
-    "Hawaiʻi Volcanoes National Park",
-    "Hot Springs National Park",
-    "Indiana Dunes National Park",
-    "Isle Royale National Park",
-    "Joshua Tree National Park",
-    "Katmai National Park & Preserve",
-    "Kenai Fjords National Park",
-    "Kings Canyon National Park",
-    "Kobuk Valley National Park",
-    "Lake Clark National Park & Preserve",
-    "Lassen Volcanic National Park",
-    "Mammoth Cave National Park",
-    "Mesa Verde National Park",
-    "Mount Rainier National Park",
-    "New River Gorge National Park & Preserve",
-    "North Cascades National Park",
-    "Olympic National Park",
-    "Petrified Forest National Park",
-    "Pinnacles National Park",
-    "Redwood National Park",
-    "Rocky Mountain National Park",
-    "Saguaro National Park",
-    "Sequoia National Park",
-    "Shenandoah National Park",
-    "Theodore Roosevelt National Park",
-    "Virgin Islands National Park",
-    "Voyageurs National Park",
-    "White Sands National Park",
-    "Wind Cave National Park",
-    "Wrangell–St. Elias National Park & Preserve",
-    "Yellowstone National Park",
-    "Yosemite National Park",
-    "Zion National Park",
-    "Monterey Bay",
-    "Monument Valley",
-    "Niagara Falls",
 
-
-]
-
-# -----------------------------
-# STEP 1: RESOLVE PLACE IDS
-# -----------------------------
-place_ids = []
-park_place_map = {}
-
-print("\n🔍 Resolving park place IDs...\n")
-
-for park in national_parks:
-    response = requests.get(AUTOCOMPLETE_URL, params={"q": park})
-    response.raise_for_status()
-    results = response.json().get("results", [])
-
-    if results:
-        best = results[0]
-        place_id = best["id"]
-
-        place_ids.append(place_id)
-        park_place_map[park] = {
-            "place_id": place_id,
-            "display_name": best["display_name"]
-        }
-
-        print(f"✔ {park} → {place_id}")
-
-    else:
-        print(f"✘ No match found for {park}")
-        park_place_map[park] = None
-
-    time.sleep(0.1)
+place_ids = fetch_park_id()
 
 # -----------------------------
 # STEP 2: FETCH PLACE DETAILS
