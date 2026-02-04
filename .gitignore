@@ -1,0 +1,5 @@
+.env
+.venv
+*.json
+*private_key.txt
+.gitignore
