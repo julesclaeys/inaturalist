@@ -33,7 +33,7 @@ def fetch_park_id():
         #Set up Different Paths for different Levels of Logging (Warning)
         warning_dir = 'logs/get_park_ids/WARNING'
         os.makedirs(warning_dir, exist_ok=True)
-        Warning_log = logging.FileHandler("logs/get_park_ids/Warning/" + output_file, encoding="utf-8")
+        Warning_log = logging.FileHandler("logs/get_park_ids/WARNING/" + output_file, encoding="utf-8")
         logger.addHandler(Warning_log)
         Warning_log.setLevel(logging.WARNING)
         Warning_log.setFormatter(log_format)
@@ -43,16 +43,16 @@ def fetch_park_id():
         error_dir = 'logs/get_park_ids/ERROR'
         os.makedirs(error_dir, exist_ok=True)
         error_log = logging.FileHandler("logs/get_park_ids/ERROR/" + output_file, encoding="utf-8")
-        logger.addHandler(Warning_log)
+        logger.addHandler(error_log)
         error_log.setLevel(logging.ERROR)
         error_log.setFormatter(log_format)
         error_log.addFilter(lambda record: record.levelno == logging.ERROR)
     except Exception as e:
-        logger.error("Error creating logger")
+        logger.error("Error creating logger", exc_info=True)
 
     try: 
         logger.info("Starting fetch_park_ids()")
-        AUTOCOMPLETE_URL = "https://api.inaturalist.org/v1/places/autocomplete" #API URL Query to obtain IDs for all our locations of interest
+        AUTOCOMPLETE_URL = "https://api.inaturalist.org/v1/places/autocomplete/" #API URL Query to obtain IDs for all our locations of interest
         # -----------------------------
         # NATIONAL PARK NAMES
         # ----------------------------- (Chat GPT Generated List, with additional locations for my own interest, not all work but that is part of the code)
@@ -122,7 +122,7 @@ def fetch_park_id():
             "Zion National Park",
             "Monterey Bay",
             "Monument Valley",
-            "Niagara Falls",
+            "Niagara Falls"
 
 
         ]
@@ -130,9 +130,10 @@ def fetch_park_id():
         place_ids = [] #Set Variables
         park_place_map = {}
     except Exception as e: 
-        logger.error("Error creating Park list", park, exc_info=True)
+        logger.error("Error creating Park list", exc_info=True)
 
     try: 
+        test = int('ab')
         for park in national_parks:
             response = requests.get(AUTOCOMPLETE_URL, params={"q": park})
             response.raise_for_status()
@@ -155,7 +156,7 @@ def fetch_park_id():
 
             time.sleep(0.1)
     except Exception as e: 
-        logger.error("Error fetching Park data", park, exc_info=True)
+        logger.error("Error fetching Park data %s", exc_info=True)
     logger.info('Finished running fetch_park_id')
     print(place_ids)
     return place_ids
