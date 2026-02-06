@@ -127,13 +127,14 @@ def fetch_park_id():
 
         ]
 
-        place_ids = [] #Set Variables
-        park_place_map = {}
+
     except Exception as e: 
         logger.error("Error creating Park list", exc_info=True)
 
+    place_ids = [] #Set Variables
+    park_place_map = {}
+
     try: 
-        test = int('ab')
         for park in national_parks:
             response = requests.get(AUTOCOMPLETE_URL, params={"q": park})
             response.raise_for_status()
@@ -158,7 +159,5 @@ def fetch_park_id():
     except Exception as e: 
         logger.error("Error fetching Park data %s", exc_info=True)
     logger.info('Finished running fetch_park_id')
-    print(place_ids)
+    logger.info(place_ids)
     return place_ids
-
-print(fetch_park_id())
