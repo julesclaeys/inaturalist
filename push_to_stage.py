@@ -89,11 +89,10 @@ def push_to_stage(directory):
     
     logger.info(f"Connection Successful, pushing to Stage")
 
-    path = "Data/*"
 
     try: 
         cursor.execute(f"""
-        PUT file://{path}
+        PUT file://{directory}
         @NATURE_STG
         AUTO_COMPRESS = TRUE
         OVERWRITE = TRUE
@@ -104,4 +103,6 @@ def push_to_stage(directory):
     except Exception:
         logger.error("Failed to Push to Stage", exc_info=True)
         raise
+
+    return print(f'Pushed {directory} to stage')
 

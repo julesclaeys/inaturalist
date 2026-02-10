@@ -109,4 +109,5 @@ def get_observations(place_ids, DAYS_BACK):
         current_date += timedelta(days=1)
 
     logger.info(f"Get Observations Complete")
+    return print('Get Observations Done')
 

@@ -99,6 +99,6 @@ def get_places(place_ids):
             json.dump(place_details, f, indent=2)
     except Exception as e:
         logger.error("Error creating json file", exc_info=True)
-
+    print(f'finished get_places')
 
 

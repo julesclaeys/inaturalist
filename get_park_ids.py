@@ -160,4 +160,5 @@ def fetch_park_id():
         logger.error("Error fetching Park data %s", exc_info=True)
     logger.info('Finished running fetch_park_id')
     logger.info(place_ids)
+    print(F'finished get_park_ids')
     return place_ids

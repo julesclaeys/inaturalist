@@ -74,6 +74,7 @@ def get_taxon():
     }
 
     logger.info(f"Starting Get Taxon")
+    print('Starting Get Taxon')
     logger.info(f"Connecting to Snowflake")
 
     try: 
@@ -159,6 +160,8 @@ def get_taxon():
 
     except Exception as e: 
         logger.error(f"Failed to generate {output_file}")
+    
+    return print(f'Taxons Fetched')
 
 
 # abs_path = os.path.abspath(output_file)

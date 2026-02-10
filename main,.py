@@ -15,7 +15,7 @@ from push_to_stage import *
 
 # Set Up Variables
 SLEEP_SECONDS = 5
-DAYS_BACK = 4
+DAYS_BACK = 0
 directory = "Data/"
 
 #Run Pipeline
