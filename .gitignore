@@ -6,3 +6,8 @@
 data/
 logs/
 .pyc
+old_Data
+pycache
+*.pyc
+__pycache__/
+*.py[cod]
