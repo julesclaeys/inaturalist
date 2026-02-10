@@ -74,7 +74,7 @@ def get_taxon():
     }
 
     logger.info(f"Starting Get Taxon")
-    print('Starting Get Taxon')
+    print('Starting Get')
     logger.info(f"Connecting to Snowflake")
 
     try: 
