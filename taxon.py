@@ -62,9 +62,6 @@ def get_taxon():
     except Exception as e: 
         logger.error(f"Error loading env variables", exc_info=True)
 
-
-    
-
     conn_params = {
         'account': 'ad21223.eu-west-1',
         'user': 'SVC_SNOWFLAKE_PYTHON_JC',
