@@ -1,6 +1,6 @@
 # 🌵 iNaturalist Python Tools
 
-Python utilities for interacting with the **iNaturalist API** and processing biodiversity observation data. This repository allows you to fetch species observations, retrieve geographic places or parks, and work with taxonomic information.
+This is a Python Project utilising the iNaturalist API and going through biodiversity observations in National Parks and additional Locations to publish them to a Snowflake Server. You can utilise some of the Python Scripts and edit them to retrieve data from your favorite locations! 
 
 ---
 
@@ -23,7 +23,7 @@ Python utilities for interacting with the **iNaturalist API** and processing bio
 
 ## 🦊 About iNaturalist API
 
-[iNaturalist](https://www.inaturalist.org/) is a global citizen-science platform where users can record observations of plants, animals, fungi, and other organisms. The iNaturalist API provides programmatic access to this data, enabling developers and researchers to:
+[iNaturalist](https://www.inaturalist.org/) is a global community where users can record observations of plants, animals, fungi, and other organisms. The iNaturalist API provides  access to this data, enabling developers and researchers to:
 
 - Query species observations
 - Retrieve geographic locations and places
@@ -44,11 +44,11 @@ This repository provides Python scripts and utilities to simplify these interact
 2. **Create and activate a virtual environment**
 
     python3 -m venv venv  
-    source venv/bin/activate   # macOS / Linux  
     venv\Scripts\activate      # Windows  
 
 3. **Install dependencies**
-
+    All the required packages should be in the requirements.txt file!
+   
     pip install -r requirements.txt 
 
 
