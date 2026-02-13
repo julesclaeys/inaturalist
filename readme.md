@@ -4551,7 +4551,7 @@ This script utilises Snowflake. After Observation data has been loaded into snow
 
 This function takes the files from a directory and pushes them to a snowflake stage. This allows transformation then from json to a structured format to be done in Snowflake where data is added incrementally.
 
-## Repository Structure
+## 🦧 Repository Structure
 
     ├── main.py
     ├── get_park_ids.py
