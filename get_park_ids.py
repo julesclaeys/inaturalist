@@ -5,7 +5,7 @@ from datetime import date, timedelta, datetime
 import logging
 import os
 
-def fetch_park_id():
+def fetch_park_id(national_parks):
     # Set up Try block for Logging
     try: 
         # Set Up Logging
@@ -56,76 +56,6 @@ def fetch_park_id():
         # -----------------------------
         # NATIONAL PARK NAMES
         # ----------------------------- (Chat GPT Generated List, with additional locations for my own interest, not all work but that is part of the code)
-        national_parks = [
-            "Acadia National Park",
-            "American Samoa National Park",
-            "Arches National Park",
-            "Badlands National Park",
-            "Big Bend National Park",
-            "Biscayne National Park",
-            "Black Canyon of the Gunnison National Park",
-            "Bryce Canyon National Park",
-            "Canyonlands National Park",
-            "Capitol Reef National Park",
-            "Carlsbad Caverns National Park",
-            "Channel Islands National Park",
-            "Congaree National Park",
-            "Crater Lake National Park",
-            "Cuyahoga Valley National Park",
-            "Death Valley National Park",
-            "Denali National Park & Preserve",
-            "Dry Tortugas National Park",
-            "Everglades National Park",
-            "Gates of the Arctic National Park & Preserve",
-            "Gateway Arch National Park",
-            "Glacier Bay National Park & Preserve",
-            "Glacier National Park",
-            "Grand Canyon National Park",
-            "Grand Teton National Park",
-            "Great Basin National Park",
-            "Great Sand Dunes National Park & Preserve",
-            "Great Smoky Mountains National Park",
-            "Guadalupe Mountains National Park",
-            "Haleakalā National Park",
-            "Hawaiʻi Volcanoes National Park",
-            "Hot Springs National Park",
-            "Indiana Dunes National Park",
-            "Isle Royale National Park",
-            "Joshua Tree National Park",
-            "Katmai National Park & Preserve",
-            "Kenai Fjords National Park",
-            "Kings Canyon National Park",
-            "Kobuk Valley National Park",
-            "Lake Clark National Park & Preserve",
-            "Lassen Volcanic National Park",
-            "Mammoth Cave National Park",
-            "Mesa Verde National Park",
-            "Mount Rainier National Park",
-            "New River Gorge National Park & Preserve",
-            "North Cascades National Park",
-            "Olympic National Park",
-            "Petrified Forest National Park",
-            "Pinnacles National Park",
-            "Redwood National Park",
-            "Rocky Mountain National Park",
-            "Saguaro National Park",
-            "Sequoia National Park",
-            "Shenandoah National Park",
-            "Theodore Roosevelt National Park",
-            "Virgin Islands National Park",
-            "Voyageurs National Park",
-            "White Sands National Park",
-            "Wind Cave National Park",
-            "Wrangell–St. Elias National Park & Preserve",
-            "Yellowstone National Park",
-            "Yosemite National Park",
-            "Zion National Park",
-            "Monterey Bay",
-            "Monument Valley",
-            "Niagara Falls"
-
-
-        ]
 
 
     except Exception as e: 

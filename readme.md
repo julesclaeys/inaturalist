@@ -23,7 +23,7 @@ This is a Python Project utilising the iNaturalist API and going through biodive
 
 ## 🦊 About iNaturalist API
 
-[iNaturalist](https://www.inaturalist.org/) is a global community where users can record observations of plants, animals, fungi, and other organisms. The iNaturalist API provides  access to this data, enabling developers and researchers to:
+[iNaturalist](https://www.inaturalist.org/) is a global community where users can record observations of plants, animals, fungi, and other organisms. The iNaturalist API provides access to this data, enabling developers and researchers to:
 
 - Query species observations
 - Retrieve geographic locations and places
@@ -31,6 +31,8 @@ This is a Python Project utilising the iNaturalist API and going through biodive
 - Analyze biodiversity data for research or conservation projects
 
 This repository provides Python scripts and utilities to simplify these interactions with the API.
+
+Here's a link to the API documentation: https://www.inaturalist.org/pages/api+reference
 
 ---
 
@@ -51,32 +53,30 @@ This repository provides Python scripts and utilities to simplify these interact
    
     pip install -r requirements.txt 
 
+These steps should allow you to use the scripts on your machine. Any script connecting to snowflake (Taxon.py, push_to_stage.py) require you to put your own snowflake account details. 
 
 ## 🐘 Usage
 
-Each script serves a specific purpose when working with iNaturalist data.
+Each script serves a specific purpose when working with iNaturalist data: 
 
 ---
 
-### 🐒 main,.py
+### 🐒 main.py
 
-Example integration and entrypoint script.
-
-    python main,.py
+This is how I use the different functions. Only parameters to input at the Sleep_seconds which will decide how long to wait in between API calls in order to not overload the API with requests. Days_Back decides how many days, in addition to today, the script will search data for. 0 Means just today and is the default value. Removing the get_taxon() and push_to_stage() will allow a user to run the script without Snowflake. 
 
 ---
 
-### 🐯 get_places.py
+### 🐯 get_park_ids.py
 
-Search for geographic places in the iNaturalist database.
+This function takes a list of strings, these are the locations we want to obtain the IDs for. This will use the API's Get places autocomplete function to find the IDs related to each of the places. If the API does not find a location for the string, they will be sent into the logs into the warning folder. If it cannot find your location, it is worth trying different spellings, certain characters are not recognised. 
 
-    python get_places.py --query "Yellowstone"
+Example result from the logs:  
 
-**What it does:**
+Channel Islands National Park:3157
+Park Not Found, Indiana Dunes National Park.
 
-- Searches for cities, regions, or parks  
-- Returns place IDs, names, and bounding coordinates  
-- Useful for discovering place IDs for other scripts  
+The function outputs a list of IDs. 
 
 ---
 
