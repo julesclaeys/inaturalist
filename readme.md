@@ -387,6 +387,8 @@ This script takes the places_ids from fetch_park_id() and finds details for thos
 
 </details>
 
+---
+
 ### 🌺 get_observations.py
 
 Using the list of Park_ids and the number of days to search for, this returns details for the observations, the species observed, information about its taxonomy and the user. There's also a list of different identifications suggested by users. Here is an example observations: 
@@ -2901,6 +2903,8 @@ Using the list of Park_ids and the number of days to search for, this returns de
 
 </details>
 
+---
+
 ### 🐬 taxon.py
 
 This script utilises Snowflake. After Observation data has been loaded into snowflake, this script uses a Query to find the species ID of all the ancestors and children of the identified species. Then looks at the already fetched taxons to make sure we don't search for them again. Using the get_taxon we can obtain out remaining taxons as new data. For example: 
@@ -4547,9 +4551,15 @@ This script utilises Snowflake. After Observation data has been loaded into snow
 </details>
 
 
+---
+
+
+
 ### 🪸 push_to_stage.py
 
 This function takes the files from a directory and pushes them to a snowflake stage. This allows transformation then from json to a structured format to be done in Snowflake where data is added incrementally.
+
+---
 
 ## 🦧 Repository Structure
 
