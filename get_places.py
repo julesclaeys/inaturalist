@@ -8,51 +8,11 @@ from dotenv import load_dotenv
 import pandas as pd
 import csv
 
+from set_up_logs import *
+
 def get_places(place_ids):
-    # Set up Try block for Logging
-    try: 
-        # Set Up Logging
-        logger = logging.getLogger("get_places")
-        logger.setLevel(logging.DEBUG)  # Capture everything, handlers decide what to save
 
-        #Set Up Logger Format
-        log_format = logging.Formatter(
-        "%(asctime)s | %(levelname)s | %(name)s | %(message)s"
-        ) # Configure logging
-
-        #Set up Log file Name
-        ts = int(time.time())
-        output_file = f"get_places_log_{ts}.log"
-
-        #Set up Different Paths for different Levels of Logging (Info)
-        info_dir = 'logs/get_places/INFO'
-        os.makedirs(info_dir, exist_ok=True)
-        info_log = logging.FileHandler("logs/get_places/INFO/" + output_file, encoding="utf-8")
-        logger.addHandler(info_log)
-        info_log.setLevel(logging.INFO)
-        info_log.setFormatter(log_format)
-        info_log.addFilter(lambda record: record.levelno == logging.INFO)
-
-        #Set up Different Paths for different Levels of Logging (Warning)
-        warning_dir = 'logs/get_places/WARNING'
-        os.makedirs(warning_dir, exist_ok=True)
-        Warning_log = logging.FileHandler("logs/get_places/WARNING/" + output_file, encoding="utf-8")
-        logger.addHandler(Warning_log)
-        Warning_log.setLevel(logging.WARNING)
-        Warning_log.setFormatter(log_format)
-        Warning_log.addFilter(lambda record: record.levelno == logging.WARNING)
-
-            #Set up Different Paths for different Levels of Logging (ERROR)
-        error_dir = 'logs/get_places/ERROR'
-        os.makedirs(error_dir, exist_ok=True)
-        error_log = logging.FileHandler("logs/get_places/ERROR/" + output_file, encoding="utf-8")
-        logger.addHandler(error_log)
-        error_log.setLevel(logging.ERROR)
-        error_log.setFormatter(log_format)
-        error_log.addFilter(lambda record: record.levelno == logging.ERROR)
-    except Exception as e:
-        logger.error("Error creating logger", exc_info=True)
-     
+    logger = set_up_logger(get_places.__name__)
     
     logger.info("Starting get_places()")
 

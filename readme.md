@@ -14,6 +14,7 @@ This is a Python Project utilising the iNaturalist API and going through biodive
   - [3. get_places](#-get_places)  
   - [4. taxon](#-taxon)  
   - [5. push_to_stage](#-push_to_stage)  
+  - [6. set_up_logs](#-set_up_logs)  
 - [Repository Structure](#-repository-structure)  
 
 ---
@@ -4561,6 +4562,12 @@ This function takes the files from a directory and pushes them to a snowflake st
 
 ---
 
+### 🌾 set_up_logs
+
+The set up logs function will create a logger for your function. Using the name of the function to  create a logging system which classifies logs in info, waring, or error levels. You can then use logger.info for example to log any messages during the run. 
+
+---
+
 ## 🦧 Repository Structure
 
     ├── main.py
@@ -4572,3 +4579,6 @@ This function takes the files from a directory and pushes them to a snowflake st
     ├── requirements.txt
     ├── Data
     ├── Logs
+
+
+---

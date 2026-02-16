@@ -7,54 +7,19 @@ import snowflake.connector as sc
 import pandas as pd
 from datetime import date, timedelta, datetime
 import logging
-
+from set_up_logs import *
 import csv
 
 def get_taxon():
 
-    # Set up Try block for Logging
-    try: 
-        # Set Up Logging
-        logger = logging.getLogger("get_taxon")
-        logger.setLevel(logging.DEBUG)  # Capture everything, handlers decide what to save
+#############################
+# This function gathers information from snowflake to run additional API queries, 
+# fetching data about species. It will check if the taxon_IDs
+# are already in the Snowflake reference table to then fetch only required ones.
+#############################
 
-        #Set Up Logger Format
-        log_format = logging.Formatter(
-        "%(asctime)s | %(levelname)s | %(name)s | %(message)s"
-        ) # Configure logging
-
-        #Set up Log file Name
-        ts = int(time.time())
-        output_file = f"get_taxon_ids_log_{ts}.log"
-
-        #Set up Different Paths for different Levels of Logging (Info)
-        info_dir = 'logs/get_taxon/INFO'
-        os.makedirs(info_dir, exist_ok=True)
-        info_log = logging.FileHandler("logs/get_taxon/INFO/" + output_file, encoding="utf-8")
-        logger.addHandler(info_log)
-        info_log.setLevel(logging.INFO)
-        info_log.setFormatter(log_format)
-        info_log.addFilter(lambda record: record.levelno == logging.INFO)
-
-        #Set up Different Paths for different Levels of Logging (Warning)
-        warning_dir = 'logs/get_taxon/WARNING'
-        os.makedirs(warning_dir, exist_ok=True)
-        Warning_log = logging.FileHandler("logs/get_taxon/WARNING/" + output_file, encoding="utf-8")
-        logger.addHandler(Warning_log)
-        Warning_log.setLevel(logging.WARNING)
-        Warning_log.setFormatter(log_format)
-        Warning_log.addFilter(lambda record: record.levelno == logging.WARNING)
-
-            #Set up Different Paths for different Levels of Logging (ERROR)
-        error_dir = 'logs/get_taxon/ERROR'
-        os.makedirs(error_dir, exist_ok=True)
-        error_log = logging.FileHandler("logs/get_taxon/ERROR/" + output_file, encoding="utf-8")
-        logger.addHandler(error_log)
-        error_log.setLevel(logging.ERROR)
-        error_log.setFormatter(log_format)
-        error_log.addFilter(lambda record: record.levelno == logging.ERROR)
-    except Exception as e:
-        logger.error("Error creating logger", exc_info=True)
+    logger = set_up_logger(get_taxon.__name__)
+    
     try: 
         load_dotenv()
         private_key_file = os.getenv('PRIVATE_KEY_FILE')

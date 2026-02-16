@@ -12,6 +12,7 @@ from get_places import *
 from get_observations import *
 from taxon import *
 from push_to_stage import *
+from set_up_logs import *
 
 # Set Up Variables
 park_list = [

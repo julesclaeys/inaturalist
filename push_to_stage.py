@@ -7,52 +7,21 @@ import snowflake.connector as sc
 import pandas as pd
 from datetime import date, timedelta, datetime
 import logging
-
+from set_up_logs import *
 import csv
 
 def push_to_stage(directory):
 
-    # Set up Try block for Logging
+#############################
+# This function pushes all files in a directory into my snowflake Stage 
+# This function will not work on your own stage! Just an example of what you could do. 
+# If you want to set a similar one up, you will need a service account,
+# A Key pair authentification method, and to give the service account read and write permissions
+# on your stage
+#############################
 
-    # Set Up Logging
-    logger = logging.getLogger("push_to_stage")
-    logger.setLevel(logging.DEBUG)  # Capture everything, handlers decide what to save
+    logger = set_up_logger(push_to_stage.__name__)
 
-    #Set Up Logger Format
-    log_format = logging.Formatter(
-    "%(asctime)s | %(levelname)s | %(name)s | %(message)s"
-    ) # Configure logging
-
-    #Set up Log file Name
-    ts = int(time.time())
-    output_file = f"push_to_stage_log_{ts}.log"
-
-    #Set up Different Paths for different Levels of Logging (Info)
-    info_dir = 'logs/push_to_stage/INFO'
-    os.makedirs(info_dir, exist_ok=True)
-    info_log = logging.FileHandler("logs/push_to_stage/INFO/" + output_file, encoding="utf-8")
-    logger.addHandler(info_log)
-    info_log.setLevel(logging.INFO)
-    info_log.setFormatter(log_format)
-    info_log.addFilter(lambda record: record.levelno == logging.INFO)
-
-    #Set up Different Paths for different Levels of Logging (Warning)
-    warning_dir = 'logs/push_to_stage/WARNING'
-    os.makedirs(warning_dir, exist_ok=True)
-    Warning_log = logging.FileHandler("logs/push_to_stage/WARNING/" + output_file, encoding="utf-8")
-    logger.addHandler(Warning_log)
-    Warning_log.setLevel(logging.WARNING)
-    Warning_log.setFormatter(log_format)
-    Warning_log.addFilter(lambda record: record.levelno == logging.WARNING)
-
-    #Set up Different Paths for different Levels of Logging (ERROR)
-    error_dir = 'logs/push_to_stage/ERROR'
-    os.makedirs(error_dir, exist_ok=True)
-    error_log = logging.FileHandler("logs/push_to_stage/ERROR/" + output_file, encoding="utf-8")
-    logger.addHandler(error_log)
-    error_log.setLevel(logging.ERROR)
-    error_log.setFormatter(log_format)
-    error_log.addFilter(lambda record: record.levelno == logging.ERROR)
 
     try: 
         load_dotenv()
@@ -92,7 +61,7 @@ def push_to_stage(directory):
 
     try: 
         cursor.execute(f"""
-        PUT file://{directory}
+        PUT file://{directory}/*
         @NATURE_STG
         AUTO_COMPRESS = TRUE
         OVERWRITE = TRUE
