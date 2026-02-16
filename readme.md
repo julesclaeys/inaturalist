@@ -47,7 +47,8 @@ Here's a link to the API documentation: https://www.inaturalist.org/pages/api+re
     venv\Scripts\activate      # Windows  
 
 3. **Install dependencies**
-    All the required packages should be in the requirements.txt file!
+    
+All the required packages should be in the requirements.txt file!
    
     pip install -r requirements.txt 
 
