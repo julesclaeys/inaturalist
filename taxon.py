@@ -127,16 +127,3 @@ def get_taxon():
         logger.error(f"Failed to generate {output_file}")
     
     return print(f'Taxons Fetched')
-
-
-# abs_path = os.path.abspath(output_file)
-
-# cursor.execute(f"""
-#     PUT file://{abs_path}
-#     @NATURE_STG
-#     AUTO_COMPRESS = TRUE
-#     OVERWRITE = TRUE
-# """)
-
-# cursor.close()
-# ctx.close()

@@ -20,9 +20,10 @@ def push_to_stage(directory):
 # on your stage
 #############################
 
+#Setting up logger
     logger = set_up_logger(push_to_stage.__name__)
 
-
+#Obtain snowflake Parameters
     try: 
         load_dotenv()
         private_key_file = os.getenv('PRIVATE_KEY_FILE')
@@ -30,7 +31,7 @@ def push_to_stage(directory):
     except Exception as e: 
         logger.error(f"Error loading env variables", exc_info=True)
 
-
+#Set up connection
     try: 
 
         conn_params = {
@@ -49,7 +50,7 @@ def push_to_stage(directory):
         logger.info(f"Connecting to Snowflake")
 
 
-
+#Connect to snowflake
         ctx = sc.connect(**conn_params)
         cursor = ctx.cursor()
 
@@ -58,7 +59,7 @@ def push_to_stage(directory):
     
     logger.info(f"Connection Successful, pushing to Stage")
 
-
+#Push files from directory to stage
     try: 
         cursor.execute(f"""
         PUT file://{directory}/*

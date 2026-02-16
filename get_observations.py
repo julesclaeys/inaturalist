@@ -8,6 +8,11 @@ import os
 from set_up_logs import *
 
 def get_observations(place_ids, DAYS_BACK):
+
+#############################
+# This function fetches all observation data from the inaturalist api 
+# for specific places and a certain amount of days from today
+#############################
    
     logger = set_up_logger(get_observations.__name__)
      
@@ -25,7 +30,7 @@ def get_observations(place_ids, DAYS_BACK):
     while current_date <= today:
         date_str = current_date.strftime("%Y-%m-%d")
         daily_observations = []
-
+#Set up parameters 
         logger.info(f"Starting {date_str}")
         try: 
             for place_id in place_ids:
@@ -35,7 +40,7 @@ def get_observations(place_ids, DAYS_BACK):
                     "d2": date_str,
                     "per_page": 200
                 }
-
+#Make API Call
                 response = requests.get(OBSERVATIONS_URL, params=params)
                 response.raise_for_status()
 
@@ -45,7 +50,7 @@ def get_observations(place_ids, DAYS_BACK):
                         obs["source_place_id"] = place_id
                         obs["extracted_date"] = date_str
                         daily_observations.append(obs)
-
+#Log success or not for different places
                 if len(results) > 0:
                     logger.info(f"Place_id {place_id}: {len(results)} on {date_str} obs")
                 else: 
@@ -56,7 +61,7 @@ def get_observations(place_ids, DAYS_BACK):
             logger.error(f"Error Could not find Observation", exc_info=True) 
 
         try: 
-
+#Save json to file 
             file_name = f"Data/observations_{date_str}.json"
             with open(file_name, "w") as f:
                 json.dump(daily_observations, f, indent=2)

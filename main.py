@@ -13,6 +13,7 @@ from get_observations import *
 from taxon import *
 from push_to_stage import *
 from set_up_logs import *
+from remove_local_data import *
 
 # Set Up Variables
 park_list = [
@@ -86,14 +87,15 @@ park_list = [
 
         ]
 SLEEP_SECONDS = 5
-DAYS_BACK = 0
+DAYS_BACK = 4
 directory = "Data/"
 
 #Run Pipeline
-place_ids = fetch_park_id(park_list)
-print(place_ids)
-get_places(place_ids)
-get_observations(place_ids, DAYS_BACK)
+# place_ids = fetch_park_id(park_list)
+# print(place_ids)
+# get_places(place_ids)
+# get_observations(place_ids, DAYS_BACK)
 get_taxon()
-push_to_stage(directory)
+push_to_stage(directory) 
+remove_local_data(directory)
 
