@@ -9,11 +9,11 @@ This is a Python Project utilising the iNaturalist API and going through biodive
 - [About iNaturalist API](#-about-inaturalist-api)  
 - [Installation](#-installation)  
 - [Usage](#-usage)  
-  - [1. main.py](#1-mainpy)  
-  - [2. get_park_ids.py](#2-get_park_idspy)  
-  - [3. get_places.py](#3-get_placespy)  
-  - [4. taxon.py](#4-taxonpy)  
-  - [5. push_to_stage.py](#5-push_to_stage)  
+  - [1. main](#-main)  
+  - [2. get_park_ids](#-get_park_ids)  
+  - [3. get_places](#-get_places)  
+  - [4. taxon](#-taxon)  
+  - [5. push_to_stage](#-push_to_stage)  
 - [Repository Structure](#-repository-structure)  
 
 ---
@@ -58,13 +58,13 @@ Each script serves a specific purpose when working with iNaturalist data:
 
 ---
 
-### 🐒 main.py
+### 🐒 main
 
 This is how I use the different functions. Only parameters to input are Days_Back decides how many days, in addition to today, the script will search data for and the list of places you want to obtain observations for. 0 Means just today and is the default value. Removing the get_taxon() and push_to_stage() will allow a user to run the script without Snowflake. 
 
 ---
 
-### 🐯 get_park_ids.py
+### 🐯 get_park_ids
 
 This function takes a list of strings, these are the locations we want to obtain the IDs for. This will use the API's Get places autocomplete function to find the IDs related to each of the places. If the API does not find a location for the string, they will be sent into the logs into the warning folder. If it cannot find your location, it is worth trying different spellings, certain characters are not recognised. 
 
@@ -77,7 +77,7 @@ The function outputs a list of IDs. This list is used in both get_places and get
 
 ---
 
-### 🐩 get_places.py
+### 🐩 get_places
 
 This script takes the places_ids from fetch_park_id() and finds details for those places, all of the json data from the API is stored in a single file refreshed everytime you run the script, be careful not to run it without certain values as this will remove them from the file. For example we looked at the Channel Islands National Park with ID 3157 this is the output:
 
@@ -389,7 +389,7 @@ This script takes the places_ids from fetch_park_id() and finds details for thos
 
 ---
 
-### 🌺 get_observations.py
+### 🌺 get_observations
 
 Using the list of Park_ids and the number of days to search for, this returns details for the observations, the species observed, information about its taxonomy and the user. There's also a list of different identifications suggested by users. Here is an example observations: 
 
@@ -2905,7 +2905,7 @@ Using the list of Park_ids and the number of days to search for, this returns de
 
 ---
 
-### 🐬 taxon.py
+### 🐬 taxon
 
 This script utilises Snowflake. After Observation data has been loaded into snowflake, this script uses a Query to find the species ID of all the ancestors and children of the identified species. Then looks at the already fetched taxons to make sure we don't search for them again. Using the get_taxon we can obtain out remaining taxons as new data. For example: 
 
@@ -4555,7 +4555,7 @@ This script utilises Snowflake. After Observation data has been loaded into snow
 
 
 
-### 🪸 push_to_stage.py
+### 🪸 push_to_stage
 
 This function takes the files from a directory and pushes them to a snowflake stage. This allows transformation then from json to a structured format to be done in Snowflake where data is added incrementally.
 
