@@ -4,11 +4,7 @@ import json
 from dotenv import load_dotenv
 import os
 import snowflake.connector as sc
-import pandas as pd
-from datetime import date, timedelta, datetime
-import logging
-from set_up_logs import *
-import csv
+from Modules.set_up_logs import *
 
 def get_taxon():
 
@@ -24,18 +20,23 @@ def get_taxon():
         load_dotenv()
         private_key_file = os.getenv('PRIVATE_KEY_FILE')
         private_key_file_pwd = os.getenv("PRIVATE_KEY_PASSWORD")
+        account = os.getenv("ACCOUNT")
+        user = os.getenv("USER")
+        warehouse = os.getenv("WAREHOUSE")
+        database = os.getenv("DATABASE")
+        schema = os.getenv("SCHEMA")
     except Exception as e: 
         logger.error(f"Error loading env variables", exc_info=True)
 
     conn_params = {
-        'account': 'ad21223.eu-west-1',
-        'user': 'SVC_SNOWFLAKE_PYTHON_JC',
+        'account': account,
+        'user': user,
         'authenticator': 'SNOWFLAKE_JWT',
         'private_key_file': private_key_file,
         'private_key_file_pwd': private_key_file_pwd,
-        'warehouse': 'dataschool_wh',
-        'database': 'til_data_engineering',
-        'schema': 'jc_nature'
+        'warehouse': warehouse,
+        'database': database,
+        'schema': schema
     }
 
     logger.info(f"Starting Get Taxon")
@@ -77,7 +78,7 @@ def get_taxon():
 
     logger.info("Connected to Snowflake")
 
-    # Execute query and fetch data into Pandas
+    # Execute query and fetch data 
     cursor.execute(query)
 
     rows = cursor.fetchall()

@@ -3,9 +3,7 @@ import requests
 import time
 import json
 from datetime import date, timedelta, datetime
-import logging
-import os
-from set_up_logs import *
+from Modules.set_up_logs import *
 
 def get_observations(place_ids, DAYS_BACK):
 

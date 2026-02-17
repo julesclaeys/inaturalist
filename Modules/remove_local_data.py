@@ -1,21 +1,10 @@
 #Import Packages
-import requests
-import time
-import json
-from datetime import date, timedelta, datetime
-import logging
 import os
 from dotenv import load_dotenv
 import snowflake.connector as sc
 
-
 #Import Modules
-from get_park_ids import *
-from get_places import *
-from get_observations import *
-from taxon import *
-from push_to_stage import *
-from set_up_logs import *
+from Modules.set_up_logs import *
 
 def remove_local_data(directory):
 
@@ -35,18 +24,23 @@ def remove_local_data(directory):
         load_dotenv()
         private_key_file = os.getenv('PRIVATE_KEY_FILE')
         private_key_file_pwd = os.getenv("PRIVATE_KEY_PASSWORD")
+        account = os.getenv("ACCOUNT")
+        user = os.getenv("USER")
+        warehouse = os.getenv("WAREHOUSE")
+        database = os.getenv("DATABASE")
+        schema = os.getenv("SCHEMA")
     except Exception as e: 
         logger.error(f"Error loading env variables", exc_info=True)
 
     conn_params = {
-        'account': 'ad21223.eu-west-1',
-        'user': 'SVC_SNOWFLAKE_PYTHON_JC',
+        'account': account,
+        'user': user,
         'authenticator': 'SNOWFLAKE_JWT',
         'private_key_file': private_key_file,
         'private_key_file_pwd': private_key_file_pwd,
-        'warehouse': 'dataschool_wh',
-        'database': 'til_data_engineering',
-        'schema': 'jc_nature'
+        'warehouse': warehouse,
+        'database': database,
+        'schema': schema
     }
 
     logger.info(f"Starting remove local data")

@@ -1,19 +1,11 @@
-#Import Packages
-import requests
-import time
-import json
-from datetime import date, timedelta, datetime
-import logging
-import os
-
 #Import Modules
-from get_park_ids import *
-from get_places import *
-from get_observations import *
-from taxon import *
-from push_to_stage import *
-from set_up_logs import *
-from remove_local_data import *
+from iNaturalist_Modules.get_park_ids import *
+from iNaturalist_Modules.get_places import *
+from iNaturalist_Modules.get_observations import *
+from iNaturalist_Modules.taxon import *
+from Modules.push_to_stage import *
+from Modules.set_up_logs import *
+from Modules.remove_local_data import *
 
 # Set Up Variables
 park_list = [
@@ -87,14 +79,14 @@ park_list = [
 
         ]
 SLEEP_SECONDS = 5
-DAYS_BACK = 4
+DAYS_BACK = 0
 directory = "Data/"
 
 #Run Pipeline
-# place_ids = fetch_park_id(park_list)
-# print(place_ids)
-# get_places(place_ids)
-# get_observations(place_ids, DAYS_BACK)
+place_ids = fetch_park_id(park_list)
+print(place_ids)
+get_places(place_ids)
+get_observations(place_ids, DAYS_BACK)
 get_taxon()
 push_to_stage(directory) 
 remove_local_data(directory)

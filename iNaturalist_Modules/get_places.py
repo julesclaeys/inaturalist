@@ -1,14 +1,9 @@
+#Import Packages
 import requests
 import time
 import json
-from datetime import date, timedelta, datetime
-import logging
-import os
-from dotenv import load_dotenv
-import pandas as pd
-import csv
 
-from set_up_logs import *
+from Modules.set_up_logs import *
 
 def get_places(place_ids):
 
