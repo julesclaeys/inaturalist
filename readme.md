@@ -15,6 +15,7 @@ This is a Python Project utilising the iNaturalist API and going through biodive
   - [4. taxon](#-taxon)  
   - [5. push_to_stage](#-push_to_stage)  
   - [6. set_up_logs](#-set_up_logs)  
+  - [7. remove_local_data](#-remove_local_data)  
 - [Repository Structure](#-repository-structure)  
 
 ---
@@ -4559,7 +4560,7 @@ This script utilises Snowflake. After Observation data has been loaded into snow
 
 ### 🪸 push_to_stage
 
-This function takes the files from a directory and pushes them to a snowflake stage. This allows transformation then from json to a structured format to be done in Snowflake where data is added incrementally.
+This function takes the files from a directory and pushes them to a snowflake stage. As part of the function we check if the stage exists in the first place. This allows transformation then from json to a structured format to be done in Snowflake where data is added incrementally. 
 
 ---
 
@@ -4569,17 +4570,29 @@ The set up logs function will create a logger for your function. Using the name 
 
 ---
 
+###  🦋 remove_local_data
+
+This function removes data from a local directory after checking it is contained within a stage. This utilises the connection to snowflake, compares the list of files in the data folder to the one in the Snowflake Stage, if they exist in both, then they are deleted from the data repository as to not conserve duplications of the same data. 
+
+
 ## 🦧 Repository Structure
 
     ├── main.py
-    ├── get_park_ids.py
-    ├── get_places.py
-    ├── get_observations.py
-    ├── taxon.py
-    ├── push_to_stage.py
+    ├── Modules              
+        ├── set_up_logs.py
+        ├── push_to_stage.py
+        └── remove_local_data.py
+    ├── iNtauralist Modules  
+        ├── get_park_ids.py
+        ├── get_places.py
+        ├── get_observations.py
+        └── taxon.py
     ├── requirements.txt
-    ├── Data
-    ├── Logs
+    ├── Data                 
+    └── Logs                 
+        ├── INFO
+        ├── WARNING
+        └── ERROR
 
 
 ---
