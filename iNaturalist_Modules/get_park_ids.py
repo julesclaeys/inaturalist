@@ -11,6 +11,11 @@ from Modules.set_up_logs import *
 def fetch_park_id(national_parks):
     logger = set_up_logger(fetch_park_id.__name__)
 
+#############################
+# This function fetches all IDs for a list of locations.
+# These IDs can be used for further calls made to the API
+#############################
+   
 
     try: 
         logger.info("Starting fetch_park_ids()")

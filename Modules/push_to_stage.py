@@ -11,7 +11,7 @@ def push_to_stage(directory, stage):
 # This function will not work on your own stage! Just an example of what you could do. 
 # If you want to set a similar one up, you will need a service account,
 # A Key pair authentification method, and to give the service account read and write permissions
-# on your stage
+# on your stage. Before pushing the data, the script will check that the stage mentioned exists.
 #############################
 
 #Setting up logger

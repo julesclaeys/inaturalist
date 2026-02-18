@@ -7,6 +7,12 @@ from Modules.set_up_logs import *
 
 def get_places(place_ids):
 
+#############################
+# This function uses a list of place IDs from inaturalist
+# and searched for details regarding the place including exact coordinates
+#############################
+   
+
     logger = set_up_logger(get_places.__name__)
     
     logger.info("Starting get_places()")

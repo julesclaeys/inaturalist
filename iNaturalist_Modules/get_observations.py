@@ -9,7 +9,8 @@ def get_observations(place_ids, DAYS_BACK):
 
 #############################
 # This function fetches all observation data from the inaturalist api 
-# for specific places and a certain amount of days from today
+# for specific places and a certain amount of days from today. 
+# The Github Readme includes an example of the json retrieved.
 #############################
    
     logger = set_up_logger(get_observations.__name__)
