@@ -78,7 +78,7 @@ park_list = [
 
 
         ]
-DAYS_BACK = 0
+DAYS_BACK = 1
 directory = "Data/"
 stage = 'nature_stg'
 #Run Pipeline
