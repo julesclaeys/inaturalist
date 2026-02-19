@@ -2,6 +2,9 @@
 
 This is a Python Project utilising the iNaturalist API and going through biodiversity observations in National Parks and additional Locations to publish them to a Snowflake Server. You can utilise some of the Python Scripts and edit them to retrieve data from your favorite locations! 
 
+
+![image](Diagram.png)
+
 ---
 
 ## 🦆 Contents 
