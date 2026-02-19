@@ -22,7 +22,6 @@ VARIANT_COL:taxon:id::string as Taxon_ID
 , VARIANT_COL:taxon:iconic_taxon_name::string as Recognisable_Name -- If not there's a recognisable name but can loose some details
 , VARIANT_COL:taxon:rank_level::int as Rank_Level 
 , VARIANT_COL:taxon:rank::string as Rank -- Taxonomy Rank
-, VARIANT_COL:taxon:threatened::boolean as is_threatened 
 , VARIANT_COL:taxon:ancestor_ids[1]::int as Kingdom_ID -- Next few IDs are used to fetch taxon information in the get_taxon script
 , VARIANT_COL:taxon:ancestor_ids[2]::int as Phylum_ID
 , VARIANT_COL:taxon:ancestor_ids[3]::int as Class_ID
@@ -79,9 +78,6 @@ VARIANT_COL:user:id::string as user_ID -- user id
 , VARIANT_COL:user:name::string as name -- name of the user
 , VARIANT_COL:user:orcid::string as orcid -- orcid for researchers 
 , VARIANT_COL:user:created_at::datetime as created_at 
-, VARIANT_COL:user:annotated_observations_count::int as observations_count
-, VARIANT_COL:user:species_count::int as species_count
-, VARIANT_COL:user:activity_count::int as activity_count -- how active the user is
 , VARIANT_COL:user:suspended::boolean as is_suspended --careul you cannot name a field suspended
 FROM TIL_DATA_ENGINEERING.JC_NATURE.B_OBSERVATIONS;
 

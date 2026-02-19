@@ -19,6 +19,7 @@ This is a Python Project utilising the iNaturalist API and going through biodive
   - [5. push_to_stage](#-push_to_stage)  
   - [6. set_up_logs](#-set_up_logs)  
   - [7. remove_local_data](#-remove_local_data)  
+  - [8. Snowflake Scripts](#-Snowflake Scripts)  
 - [Repository Structure](#-repository-structure)  
 
 ---
@@ -4577,6 +4578,17 @@ The set up logs function will create a logger for your function. Using the name 
 
 This function removes data from a local directory after checking it is contained within a stage. This utilises the connection to snowflake, compares the list of files in the data folder to the one in the Snowflake Stage, if they exist in both, then they are deleted from the data repository as to not conserve duplications of the same data. 
 
+---
+
+### 🐻‍❄️ Snowflake Scripts
+
+Scripts used to build and maintain tables were added into the Snowflake Scripts folder. From the Stage, three Bronze layer tables to compartmentalise raw data for observations, places, and taxonomy. Using stored procedures we move into the Silver layer pushing this schema: 
+
+![image](Schema.png)
+
+These are then transformed into different tables and views ready for analysis as part of the gold layer. The Analysis is conducted in Tableau.
+
+---
 
 ## 🦧 Repository Structure
 
@@ -4590,6 +4602,12 @@ This function removes data from a local directory after checking it is contained
         ├── get_places.py
         ├── get_observations.py
         └── taxon.py
+    ├── Snowflake Scripts 
+        ├── Bronze
+            └── Copy_into.sql
+        ├── Silver
+            └── silver_table_build.sql
+        └── Gold
     ├── requirements.txt
     ├── Data                 
     └── Logs                 
