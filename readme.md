@@ -19,7 +19,8 @@ This is a Python Project utilising the iNaturalist API and going through biodive
   - [5. push_to_stage](#-push_to_stage)  
   - [6. set_up_logs](#-set_up_logs)  
   - [7. remove_local_data](#-remove_local_data)  
-  - [8. Snowflake Scripts](#-Snowflake Scripts)  
+  - [8. Snowflake Scripts](#snowflake-scripts)
+
 - [Repository Structure](#-repository-structure)  
 
 ---
@@ -4580,6 +4581,7 @@ This function removes data from a local directory after checking it is contained
 
 ---
 
+<a id="snowflake-scripts"></a>
 ### 🐻‍❄️ Snowflake Scripts
 
 Scripts used to build and maintain tables were added into the Snowflake Scripts folder. From the Stage, three Bronze layer tables to compartmentalise raw data for observations, places, and taxonomy. Using stored procedures we move into the Silver layer pushing this schema: 
