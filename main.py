@@ -72,13 +72,48 @@ park_list = [
             "Yellowstone National Park",
             "Yosemite National Park",
             "Zion National Park",
-            "Monterey Bay",
+            "Kruger National Park",
             "Monument Valley",
-            "Niagara Falls"
-
-
+            "Niagara Falls", 
+            "Muir Woods",
+            "Point Reyes", 
+            "Peak District National Park", 
+            "Table Mountain National Park",
+            "Lake District National Park",
+            "Snowdonia National Park",
+            "Blue Mountains National Park, NSW, AU (NPWS Tenure polygon",
+            "Banff National Park",
+            "Parque Nacional Galapagos",
+            "Royal National Park, NS, AU",
+            "Jasper National Park, AB, CA",
+            "Kosciuszko National Park",
+            "Pacific Rim National Park Reserve",
+            "Addo Elephant National Park MPA, ZA",
+            "Kakadu National Park",
+            "Serengeti National Park",
+            "Parque Nacional Iguazú, MN, AR",
+            "Parque Nacional Torres del Paine, MA, CL",
+            "Cumbres de Monterrey",
+            "Nationalpark Hohe Tauern",
+            "Triglavski narodni park",
+            "Plitvička Jezera, LS, HR",
+            "Khao Yai",
+            "Sagarmatha",
+            "Namib-Naukluft",
+            "Parque Nacional Manuel Antonio",
+            "Gunung Mulu",
+            "Komodo National Park World Heritage Site, ID",
+            "Parco Nazionale delle Cinque Terre",
+            "Area marina protetta Cinque Terre, Liguria, IT",
+            "Westland Tai Poutini",
+            "Bwindi Impenetrable",
+            "Parque Nacional Rincón de la Vieja, GU, CR",
+            "Great Barrier Reef, AU",
+            "Masai Mara",
+            "Durmitor National Park World Heritage Site, ME",
+            "Parc National des Calanques, FR"
         ]
-DAYS_BACK = 1
+DAYS_BACK = 2
 directory = "Data/"
 stage = 'nature_stg'
 #Run Pipeline

@@ -18,7 +18,7 @@ CREATE OR REPLACE TABLE S_Taxon as
 SELECT DISTINCT 
 VARIANT_COL:taxon:id::string as Taxon_ID 
 ,VARIANT_COL:taxon:name::string as Taxon_Name -- Scientific Name
-, VARIANT_COL:taxon:preferred_common_name::string as Common_Name -- If exists, common name
+, INITCAP(VARIANT_COL:taxon:preferred_common_name::string) as Common_name -- If exists, common name
 , VARIANT_COL:taxon:iconic_taxon_name::string as Recognisable_Name -- If not there's a recognisable name but can loose some details
 , VARIANT_COL:taxon:rank_level::int as Rank_Level 
 , VARIANT_COL:taxon:rank::string as Rank -- Taxonomy Rank
@@ -29,10 +29,6 @@ VARIANT_COL:taxon:id::string as Taxon_ID
 , VARIANT_COL:taxon:ancestor_ids[4]::int as Order_ID
 , VARIANT_COL:taxon:ancestor_ids[5]::int as Family_ID
 , VARIANT_COL:taxon:ancestor_ids[6]::int as Genus_ID
-, VARIANT_COL:taxon:complete_species_count::int as complete_species_count
-, VARIANT_COL:taxon:extinct::boolean as is_extinct -- Extinction boolean
-, VARIANT_COL:taxon:conservation_status:status_name::string as conservation_status -- Conservation Status of the species
-
 FROM TIL_DATA_ENGINEERING.JC_NATURE.B_OBSERVATIONS
 WHERE VARIANT_COL:taxon:name::string IS NOT NULL -- remove unidentified observations as they currently break the logic 
 ;
@@ -107,4 +103,9 @@ VARIANT_COL:id::string as Observation_ID -- Unique ID for each observation
 , VARIANT_COL:observation_photos:url::string as photo_url --URL for the observation made
 , VARIANT_COL:project_ids::array as project_ID 
 , VARIANT_COL:quality_grade::string as quality -- Quality of the observation
+, VARIANT_COL:taxon:complete_species_count::int as complete_species_count
+, VARIANT_COL:taxon:extinct::boolean as is_extinct
+, VARIANT_COL:taxon:conservation_status:status_name::string as conservation_status
+, VARIANT_COL:taxon:threatened::boolean as is_threatened 
+
 FROM TIL_DATA_ENGINEERING.JC_NATURE.B_OBSERVATIONS;
