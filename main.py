@@ -111,9 +111,38 @@ park_list = [
             "Great Barrier Reef, AU",
             "Masai Mara",
             "Durmitor National Park World Heritage Site, ME",
-            "Parc National des Calanques, FR"
+            "Parc National des Calanques, FR",
+            "Parque Nacional Yasuní, ECU",
+            "Parque Nacional Corcovado",
+            "Gunung Leuser",
+            "Parc National de la Salonga",
+            "Wadi Rum",
+            "tassili n'ajjer",
+            "Parque Nacional Monte León, SC, AR",
+            "Wood Buffalo National Park, AB, CA",
+            "Urho Kekkosen kansallispuisto",
+            "Huascarán",
+            "Altai Tavan Bogd",
+            "Etosha National Park",
+            "Parque Nacional de Doñana, ES",
+            "Parco Nazionale del Cilento, Vallo di Diano e Alburni, Campania, IT",
+            "samaria",
+            "Svalbard and Jan Mayen",
+            "Auyuittuq National Park, CA, NU",
+            "Ranomafana National Park, FI, MG",
+            "Jiuzhaigou Valley Scenic and Historic Interest Area, SC, CN",
+            "Tai National Park, CI",
+            "Mole National Park",
+            "Tubbataha Reefs",
+            "Northeast Greenland National Park, GL",
+            "Jeju KR",
+            "Bukhansan National Park, KR",
+            "Khangchendzonga ",
+            "Fujikawaguchiko, JP, YN",
+            "Danum Valley Conservation Area, SA, MY"
+
         ]
-DAYS_BACK = 2
+DAYS_BACK = 5
 directory = "Data/"
 stage = 'nature_stg'
 #Run Pipeline
