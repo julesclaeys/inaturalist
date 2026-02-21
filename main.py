@@ -139,17 +139,25 @@ park_list = [
             "Bukhansan National Park, KR",
             "Khangchendzonga ",
             "Fujikawaguchiko, JP, YN",
-            "Danum Valley Conservation Area, SA, MY"
+            "Danum Valley Conservation Area, SA, MY",
+            "Fernando de Noronha",
+            "Parque Nacional da Chapada dos Veadeiros", 
+            "Lençóis Maranhenses",
+            "Canaima National Park",
+            "Parque Nacional da Serra dos Órgãos",
+            "El Yunque National Forest",
+            ""
+
 
         ]
-DAYS_BACK = 5
+DAYS_BACK = 1
 directory = "Data/"
 stage = 'nature_stg'
-#Run Pipeline
-place_ids = fetch_park_id(park_list)
-get_places(place_ids)
-get_observations(place_ids, DAYS_BACK)
-get_taxon()
+# #Run Pipeline
+# place_ids = fetch_park_id(park_list)
+# get_places(place_ids)
+# get_observations(place_ids, DAYS_BACK)
+#get_taxon()
 push_to_stage(directory, stage) 
 remove_local_data(directory)
 
