@@ -25,7 +25,7 @@ park_list = [
             "Crater Lake National Park",
             "Cuyahoga Valley National Park",
             "Death Valley National Park",
-            "Denali National Park & Preserve",
+            "Denali National Park",
             "Dry Tortugas National Park",
             "Everglades National Park",
             "Gates of the Arctic National Park & Preserve",
@@ -146,18 +146,50 @@ park_list = [
             "Canaima National Park",
             "Parque Nacional da Serra dos Órgãos",
             "El Yunque National Forest",
-            ""
-
+            "Parque Nacional del Teide",
+            "Thingvellir",
+            "Jotunheimen", 
+            "Białowieża Forest World Heritage Site",
+            "chobe-national-park",
+            "Simien Mountains",
+            "Ras Mohammed National Park",
+            "Mount Huangshan World Heritage Site ",
+            "Ha long bay",
+            "Kaziranga",
+            "Sundarbans National Park",
+            "Nanhu Taroko",
+            "Gunung Mulu National Park",
+            "Uluru-Kata Tjuta",
+            "Tongariro National Park World Heritage Site",
+            "Papahānaumokuākea World Heritage Site",
+            "Ningaloo Coast World Heritage Site",
+            "Franklin-Gordon Wild Rivers",
+            "Morne Trois Pitons",
+            "Christoffel National Park",
+            "Hol Chan Marine Reserve",
+            "Belize Barrier Reef Reserve System",
+            "Blue and John Crow Mountains World Heritage Site",
+            "Alejandro de Humboldt",
+            "Varirata National Park",
+            "Lenskie stolby",
+            "Плато Путорана Putorana Plateau World Heritage Site",
+            "Sian Ka'an Biosphere Reserve",
+            "Parque Nacional Cabo Pulmo, BS, MX",
+            "Parque Nacional Cañón del Sumidero",
+            "Parque Nacional Iztaccihuatl - Popocatepetl"
 
         ]
-DAYS_BACK = 1
+DAYS_BACK = 2
 directory = "Data/"
 stage = 'nature_stg'
-# #Run Pipeline
-# place_ids = fetch_park_id(park_list)
-# get_places(place_ids)
-# get_observations(place_ids, DAYS_BACK)
-#get_taxon()
+SCHEMA = 'JC_NATURE'
+DATABASE = 'TIL_DATA_ENGINEERING'
+
+#Run Pipeline
+place_ids = fetch_park_id(park_list)
+get_places(place_ids)
+get_observations(place_ids, DAYS_BACK)
+get_taxon()
 push_to_stage(directory, stage) 
 remove_local_data(directory)
 
