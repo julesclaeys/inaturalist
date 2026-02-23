@@ -3,15 +3,13 @@
 *.json
 *private_key.txt
 .gitignore
-data/
-logs/
 .pyc
 old_Data
 pycache
 *.pyc
 __pycache__/
 *.py[cod]
-
+*.log
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
