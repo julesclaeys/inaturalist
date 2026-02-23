@@ -188,7 +188,7 @@ warehouse = 'dataschool_wh'
 database = 'TIL_DATA_ENGINEERING'
 account = os.environ["ACCOUNT"]
 password = os.environ["PASSWORD"]
-private_key = os.environ["PRIVATE_KEY"]
+private_key = "private_key.p8"
 #Run Pipeline
 place_ids = fetch_park_id(park_list)
 get_places(place_ids)
