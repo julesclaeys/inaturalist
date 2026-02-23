@@ -39,7 +39,7 @@ def get_taxon(stage, schema, database, account, password, private_key, warehouse
     }
 
     logger.info(f"Starting Get Taxon")
-    print('Starting Get')
+    print('Starting Get Taxon')
     logger.info(f"Connecting to Snowflake")
 
     try:
