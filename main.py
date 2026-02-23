@@ -188,8 +188,14 @@ warehouse = 'dataschool_wh'
 database = 'TIL_DATA_ENGINEERING'
 account = os.environ["ACCOUNT"]
 password = os.environ["PASSWORD"]
-private_key = "snowflake_key.p8"
+private_key = 'snowflake_key.p8'
+
+print(len(account))
+print(len(password))
+print(len(private_key))
+
 #Run Pipeline
+
 place_ids = fetch_park_id(park_list)
 get_places(place_ids)
 get_observations(place_ids, days_back)

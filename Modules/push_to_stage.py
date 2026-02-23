@@ -19,7 +19,6 @@ def push_to_stage(directory, stage, schema, database, account, password, private
 
 #Obtain snowflake Parameters
     try: 
-        load_dotenv()
         private_key_file = private_key
         private_key_file_pwd = password
         account = account
