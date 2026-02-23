@@ -193,6 +193,42 @@ private_key = 'snowflake_key.p8'
 key_path = "private_key.p8"
 print(f"PRIVATE_KEY file exists: {os.path.exists(key_path)} size={os.path.getsize(key_path) if os.path.exists(key_path) else 'N/A'}")
 
+
+conn_params = {
+        'account': account,
+        'user': user,
+        'authenticator': 'SNOWFLAKE_JWT',
+        'private_key_file': private_key_file,
+        'private_key_file_pwd': private_key_file_pwd,
+        'warehouse': warehouse,
+        'database': database,
+        'schema': schema
+    }
+
+for name, value in conn_params.items():
+    if value is None:
+        print(f"{name} is MISSING!")
+    else:
+        print(f"{name} is set (length={len(str(value))})")
+
+import snowflake.connector as sc
+
+try:
+    ctx = sc.connect(
+        user=user,
+        account=account,
+        warehouse=warehouse,
+        database=database,
+        schema=schema,
+        authenticator='SNOWFLAKE_JWT',
+        private_key_file='private_key.p8',
+        private_key_file_pwd=password
+    )
+    print("Snowflake connection SUCCESS")
+except Exception as e:
+    print("Snowflake connection FAILED")
+    raise e
+
 #Run Pipeline
 
 place_ids = fetch_park_id(park_list)
