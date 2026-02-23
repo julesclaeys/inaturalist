@@ -190,9 +190,8 @@ account = os.environ["ACCOUNT"]
 password = os.environ["PASSWORD"]
 private_key = 'snowflake_key.p8'
 
-print(len(account))
-print(len(password))
-print(len(private_key))
+key_path = "private_key.p8"
+print(f"PRIVATE_KEY file exists: {os.path.exists(key_path)} size={os.path.getsize(key_path) if os.path.exists(key_path) else 'N/A'}")
 
 #Run Pipeline
 
