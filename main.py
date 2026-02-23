@@ -78,7 +78,7 @@ park_list = [
             # "Muir Woods",
             # "Point Reyes", 
             # "Peak District National Park", 
-            # "Table Mountain National Park",
+            "Table Mountain National Park",
             # "Lake District National Park",
             # "Snowdonia National Park",
             # "Blue Mountains National Park, NSW, AU (NPWS Tenure polygon",
@@ -170,16 +170,16 @@ park_list = [
             # "Belize Barrier Reef Reserve System",
             # "Blue and John Crow Mountains World Heritage Site",
             # "Alejandro de Humboldt",
-            "Varirata National Park",
-            "Lenskie stolby",
-            "Плато Путорана Putorana Plateau World Heritage Site",
-            "Sian Ka'an Biosphere Reserve",
-            "Parque Nacional Cabo Pulmo, BS, MX",
-            "Parque Nacional Cañón del Sumidero",
+            # "Varirata National Park",
+            # "Lenskie stolby",
+            # "Плато Путорана Putorana Plateau World Heritage Site",
+            # "Sian Ka'an Biosphere Reserve",
+            # "Parque Nacional Cabo Pulmo, BS, MX",
+            # "Parque Nacional Cañón del Sumidero",
             "Parque Nacional Iztaccihuatl - Popocatepetl"
 
         ]
-days_back = 2
+days_back = 0
 directory = "Data/"
 stage = 'nature_stg'
 schema = 'JC_NATURE'
@@ -194,6 +194,6 @@ place_ids = fetch_park_id(park_list)
 get_places(place_ids)
 get_observations(place_ids, days_back)
 get_taxon(stage, schema, database, account, password, private_key, warehouse, user)
-# push_to_stage(directory, stage, schema, database, account, password, private_key, warehouse, user) 
-# remove_local_data(directory, stage, schema, database, account, password, private_key, warehouse, user)
+push_to_stage(directory, stage, schema, database, account, password, private_key, warehouse, user) 
+remove_local_data(directory, stage, schema, database, account, password, private_key, warehouse, user)
 
