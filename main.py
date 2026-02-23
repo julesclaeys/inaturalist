@@ -179,17 +179,21 @@ park_list = [
             "Parque Nacional Iztaccihuatl - Popocatepetl"
 
         ]
-DAYS_BACK = 2
+days_back = 2
 directory = "Data/"
 stage = 'nature_stg'
-SCHEMA = 'JC_NATURE'
-DATABASE = 'TIL_DATA_ENGINEERING'
-
+schema = 'JC_NATURE'
+user = 'SVC_SNOWFLAKE_PYTHON_JC'
+warehouse = 'dataschool_wh'
+database = 'TIL_DATA_ENGINEERING'
+account = os.environ["ACCOUNT"]
+password = os.environ["PASSWORD"]
+private_key = os.environ["PRIVATE_KEY"]
 #Run Pipeline
 place_ids = fetch_park_id(park_list)
 get_places(place_ids)
-get_observations(place_ids, DAYS_BACK)
-get_taxon()
-push_to_stage(directory, stage) 
-remove_local_data(directory)
+get_observations(place_ids, days_back)
+get_taxon(stage, schema, database, account, password, private_key, warehouse, user)
+push_to_stage(directory, stage, schema, database, account, password, private_key, warehouse, user) 
+remove_local_data(directory, stage, schema, database, account, password, private_key, warehouse, user)
 

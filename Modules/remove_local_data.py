@@ -6,7 +6,7 @@ import snowflake.connector as sc
 #Import Modules
 from Modules.set_up_logs import *
 
-def remove_local_data(directory):
+def remove_local_data(directory, stage, schema, database, account, password, private_key, warehouse, user):
 
 #############################
 # This function cleans the data folder to not store data for too long.
@@ -21,14 +21,13 @@ def remove_local_data(directory):
 #Starting connection to snowflake
 
     try: 
-        load_dotenv()
-        private_key_file = os.getenv('PRIVATE_KEY_FILE')
-        private_key_file_pwd = os.getenv("PRIVATE_KEY_PASSWORD")
-        account = os.getenv("ACCOUNT")
-        user = os.getenv("USER")
-        warehouse = os.getenv("WAREHOUSE")
-        database = os.getenv("DATABASE")
-        schema = os.getenv("SCHEMA")
+        private_key_file = private_key
+        private_key_file_pwd = password
+        account = account
+        user = user
+        warehouse = warehouse
+        database = database
+        schema = schema
     except Exception as e: 
         logger.error(f"Error loading env variables", exc_info=True)
 
