@@ -198,8 +198,8 @@ conn_params = {
         'account': account,
         'user': user,
         'authenticator': 'SNOWFLAKE_JWT',
-        'private_key_file': private_key_file,
-        'private_key_file_pwd': private_key_file_pwd,
+        'private_key_file': private_key,
+        'private_key_file_pwd': password,
         'warehouse': warehouse,
         'database': database,
         'schema': schema
