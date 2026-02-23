@@ -42,11 +42,15 @@ def get_taxon(stage, schema, database, account, password, private_key, warehouse
     print('Starting Get')
     logger.info(f"Connecting to Snowflake")
 
-    try: 
+    try:
         ctx = sc.connect(**conn_params)
         cursor = ctx.cursor()
-
-        query = """
+        print("Snowflake connection SUCCESS")
+    except Exception as e:
+        logger.error("Connection Failed", exc_info=True)
+        raise e  
+    
+    query = """
         WITH UNPIVOT_CTE AS (
             SELECT DISTINCT *
             FROM S_TAXON
@@ -72,8 +76,6 @@ def get_taxon(stage, schema, database, account, password, private_key, warehouse
             SELECT Taxon_ID FROM S_REFERENCE_TAXONOMY
         )
         """
-    except Exception as e: 
-        logger.error(f"Connection Failed", exc_info=True)
 
     logger.info("Connected to Snowflake")
 
