@@ -6,6 +6,7 @@ from iNaturalist_Modules.taxon import *
 from Modules.push_to_stage import *
 from Modules.set_up_logs import *
 from Modules.remove_local_data import *
+from Modules.execute_query import *
 
 # Set Up Variables
 park_list = [
@@ -179,7 +180,6 @@ park_list = [
             "Parque Nacional Iztaccihuatl - Popocatepetl",
             "Dovrefjell-Sunndalsfjella",
             "Reserva de la Biosfera El Pinacate y Gran Desierto de Altar, SO, MX",
-            "Mid-Atlantic Ridge North of the Azores Habitats or Species Management Protected Area, PT",
             "Parque Nacional Podocarpus, EC",
             "La Amistad National Park World Heritage Site",
             "Kinabalu Park World Heritage Site, SA, MY",
@@ -196,7 +196,6 @@ park_list = [
             "parque Nacional da Serra do Cipó - PARNA da Serra do Cipó - PNSCi",
             "Alerce Andino",
             "Lord Howe Island, NS, AU",
-            "Gulf of Aden and Socotra",
             "Réunion National Park",
             "Ele Alatau",
             "Ugam-Chatkal",
@@ -206,7 +205,14 @@ park_list = [
             "Asinara National Park",
             "RB ESP 19. Reserva de la Biosfera Las Bárdenas Reales de Navarra. Navarra. España",
             "Parco nazionale del Golfo di Orosei e del Gennargentu",
-            ""
+            "Mantadia wider area",
+            "Odzala-Kokoua",
+            "Great Himalayan",
+            "Lagodekhi, KA, GE",
+            "Parque Nacional da Peneda-Gerês",
+            "Sei Sebangau Nature Conservation Area, KT, ID",
+            "Zona Protectora Arenal Monteverde-ACAT, CR",
+            "Namdapha"
 
         ]
 days_back = 1
@@ -219,7 +225,9 @@ database = 'TIL_DATA_ENGINEERING'
 account = os.environ["ACCOUNT"]
 password = os.environ["PASSWORD"]
 private_key = 'private_key.p8'
-
+bronze_query = """
+CALL Bronze_Build();
+"""
 #Run Pipeline
 
 place_ids = fetch_park_id(park_list)
@@ -228,4 +236,5 @@ get_observations(place_ids, days_back)
 get_taxon(stage, schema, database, account, password, private_key, warehouse, user)
 push_to_stage(directory, stage, schema, database, account, password, private_key, warehouse, user) 
 remove_local_data(directory, stage, schema, database, account, password, private_key, warehouse, user)
+execute_query(stage, schema, database, account, password, private_key, warehouse, user, bronze_query)
 
