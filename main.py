@@ -226,7 +226,7 @@ account = os.environ["ACCOUNT"]
 password = os.environ["PASSWORD"]
 private_key = 'private_key.p8'
 bronze_query = """
-CALL Bronze_Build();
+CALL Bronze_Build()
 """
 #Run Pipeline
 
