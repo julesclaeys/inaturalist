@@ -228,6 +228,9 @@ private_key = 'private_key.p8'
 bronze_query = """
 CALL Bronze_Build()
 """
+silver_query = """
+CALL Silver_Build()
+"""
 #Run Pipeline
 
 place_ids = fetch_park_id(park_list)
@@ -236,5 +239,9 @@ get_observations(place_ids, days_back)
 get_taxon(stage, schema, database, account, password, private_key, warehouse, user)
 push_to_stage(directory, stage, schema, database, account, password, private_key, warehouse, user) 
 remove_local_data(directory, stage, schema, database, account, password, private_key, warehouse, user)
+#Execute Bronze Layer
 execute_query(stage, schema, database, account, password, private_key, warehouse, user, bronze_query)
+execute_query(stage, schema, database, account, password, private_key, warehouse, user, silver_query)
+
+
 
