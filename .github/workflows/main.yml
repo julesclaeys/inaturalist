@@ -13,6 +13,11 @@ jobs:
       PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
       PASSWORD: ${{ secrets.PASSWORD }}
       ACCOUNT: ${{ secrets.ACCOUNT }}
+      WAREHOUSE: ${{ secrets.WAREHOUSE }}
+      DATABASE: ${{ secrets.DATABASE }}
+      SCHEMA: ${{ secrets.SCHEMA }}
+      STAGE: ${{ secrets.STAGE }}
+      USER: ${{ secrets.USER }}
 
     steps:
       - uses: actions/checkout@v4
