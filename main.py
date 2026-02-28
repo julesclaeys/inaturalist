@@ -217,11 +217,11 @@ park_list = [
         ]
 days_back = 1
 directory = "Data/"
-stage = 'nature_stg'
-schema = 'JC_NATURE'
-user = 'SVC_SNOWFLAKE_PYTHON_JC'
-warehouse = 'dataschool_wh'
-database = 'TIL_DATA_ENGINEERING'
+stage = os.environ["STAGE"]
+schema = os.environ["SCHEMA"]
+user = os.environ["USER"]
+warehouse = os.environ["WAREHOUSE"]
+database = os.environ["DATABASE"]
 account = os.environ["ACCOUNT"]
 password = os.environ["PASSWORD"]
 private_key = 'private_key.p8'
