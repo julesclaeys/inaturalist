@@ -241,7 +241,10 @@ push_to_stage(directory, stage, schema, database, account, password, private_key
 remove_local_data(directory, stage, schema, database, account, password, private_key, warehouse, user)
 #Execute Bronze Layer
 execute_query(stage, schema, database, account, password, private_key, warehouse, user, bronze_query)
-execute_query(stage, schema, database, account, password, private_key, warehouse, user, silver_query)
+
+
+
+#execute_query(stage, schema, database, account, password, private_key, warehouse, user, silver_query)
 
 
 
