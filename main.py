@@ -212,7 +212,8 @@ park_list = [
             "Mata Nacional do Gerês - Parque Nacional da Peneda-Gerês",
             "Sei Sebangau Nature Conservation Area, KT, ID",
             "Zona Protectora Arenal Monteverde-ACAT, CR",
-            "Namdapha"
+            "Namdapha",
+            "Cairngorms National Park"
 
         ]
 days_back = 1
