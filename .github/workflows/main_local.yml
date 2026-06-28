@@ -25,7 +25,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run Script
-        run: python main.py
+        run: python main2.py
 
       # Everything is handled inline here:
       - name: Commit and Push Raw Data
