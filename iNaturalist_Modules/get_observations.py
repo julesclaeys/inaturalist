@@ -61,10 +61,10 @@ def get_observations(place_ids, DAYS_BACK):
 
         try: 
 #Save json to file 
-            file_name = f"Data/observations_{date_str}.json"
+            file_name = f"Data_save/observations_{date_str}.json"
             with open(file_name, "w") as f:
                 json.dump(daily_observations, f, indent=2)
-            file_name_2 = f"Data_save/observations_{date_str}.json"
+            file_name_2 = f"Data/observations_{date_str}.json"
             with open(file_name_2, "w") as f:
                 json.dump(daily_observations, f, indent=2)
 
