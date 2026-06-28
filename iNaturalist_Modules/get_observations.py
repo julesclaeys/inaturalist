@@ -64,6 +64,9 @@ def get_observations(place_ids, DAYS_BACK):
             file_name = f"Data/observations_{date_str}.json"
             with open(file_name, "w") as f:
                 json.dump(daily_observations, f, indent=2)
+            file_name_2 = f"Data_save/observations_{date_str}.json"
+            with open(file_name_2, "w") as f:
+                json.dump(daily_observations, f, indent=2)
 
         except Exception as e: 
             logger.error(f"Error Could not save Observations", exc_info=True) 

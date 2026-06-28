@@ -58,6 +58,8 @@ def get_places(place_ids):
     try:
         with open("Data/place_details.json", "w") as f:
             json.dump(place_details, f, indent=2)
+        with open("Data_save/place_details.json", "w") as f:
+            json.dump(place_details, f, indent=2)
     except Exception as e:
         logger.error("Error creating json file", exc_info=True)
     print(f'finished get_places')
