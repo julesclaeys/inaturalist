@@ -1,6 +1,5 @@
 .env
 .venv
-*.json
 *private_key.txt
 .gitignore
 .pyc
@@ -14,3 +13,5 @@ __pycache__/
 __pycache__/
 *.py[codz]
 *$py.class
+
+!Data_save/*.json
