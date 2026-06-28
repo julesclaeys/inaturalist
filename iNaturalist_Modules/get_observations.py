@@ -1,4 +1,5 @@
 #Import Packages
+import gzip
 import requests
 import time
 import json
@@ -61,13 +62,13 @@ def get_observations(place_ids, DAYS_BACK):
 
         try: 
 #Save json to file 
-            file_name = f"Data_save/observations_{date_str}.json"
-            with open(file_name, "w") as f:
-                json.dump(daily_observations, f, indent=2)
-            file_name_2 = f"Data/observations_{date_str}.json"
-            with open(file_name_2, "w") as f:
-                json.dump(daily_observations, f, indent=2)
-
+            file_name = f"Data_save/observations_{date_str}.gzip"
+            file_name_2 = f"Data/observations_{date_str}.gzip"
+            with gzip.open(file_name, "wt", encoding="utf-8") as f:
+                json.dump(daily_observations, f)
+                
+            with gzip.open(file_name_2, "wt", encoding="utf-8") as f:
+                json.dump(daily_observations, f)
         except Exception as e: 
             logger.error(f"Error Could not save Observations", exc_info=True) 
 
