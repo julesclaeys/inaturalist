@@ -1,0 +1,45 @@
+name: Run Python Script
+
+on:
+  schedule:
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    # Crucial: This gives the runner permission to push data back to your repo
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Script
+        run: python main.py
+
+      # Everything is handled inline here:
+      - name: Commit and Push Raw Data
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # Stage your data folder
+          git add Data_save/
+          
+          # Check if there are actually any changes to avoid empty/failed commits
+          if git diff --staged --quiet; then
+            echo "No new data changes detected today. Skipping commit."
+          else
+            git commit -m "Automated data ingest: $(date -u +'%Y-%m-%d %H:%M:%S') UTC"
+            git push
+          fi
